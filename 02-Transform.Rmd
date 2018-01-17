@@ -1,0 +1,204 @@
+---
+title: "Transform Data"
+output: html_notebook
+---
+
+<!-- This file by Charlotte Wickham is licensed under a Creative Commons Attribution 4.0 International License, adapted from the orignal work at https://github.com/rstudio/master-the-tidyverse by RStudio. -->
+
+```{r setup}
+library(tidyverse)
+library(gapminder)
+
+# Toy dataset to use
+pollution <- tribble(
+       ~city,   ~size, ~amount, 
+  "New York", "large",      23,
+  "New York", "small",      14,
+    "London", "large",      22,
+    "London", "small",      16,
+   "Beijing", "large",      121,
+   "Beijing", "small",      56
+)
+```
+
+## gapminder
+
+```{r}
+gapminder
+```
+
+## Your Turn 1
+
+* `filter()` selects rows
+* logical tests
+
+See if you can use the logical operators to manipulate our code below to show:
+
+The data for United States
+```{r}
+filter(gapminder, country == "New Zealand")
+```
+
+All data for countries in Oceania
+```{r}
+filter(gapminder, country == "New Zealand")
+```
+
+Rows where the life expectancy is greater than 82
+```{r}
+filter(gapminder, country == "New Zealand")
+```
+
+
+## Your Turn 2
+
+Use Boolean operators to alter the code below to return only the rows that contain:
+
+* United States before 1970
+```{r}
+filter(gapminder, country == "New Zealand", year > 2000)
+```
+
+*  Countries where life expectancy in 2007 is below 50
+
+```{r}
+filter(gapminder, country == "New Zealand", year > 2000)
+```
+
+* Records for any of "New Zealand", "Canada" or "United States"
+
+```{r}
+filter(gapminder, country == "New Zealand", year > 2000)
+```
+
+## Your Turn 3
+
+Use `filter()` to get the records for the US, then plot the life expectancy over time.
+
+```{r}
+gapminder
+```
+
+## Your Turn 4
+
+Find the records with the smallest population.
+```{r}
+
+```
+
+Find the records with the largest GDP per capita.
+```{r}
+
+```
+
+## Quiz 
+
+A function that returns a vector the same length as the input is called **vectorized**.
+
+Which of the following functions are vectorized?
+
+  * `ifelse()`
+  * `diff()`
+  * `sum()`
+
+You might try these:
+```{r}
+gapminder %>% 
+  mutate(size = ifelse(pop < 10e06, "small", "large"))
+```
+
+```{r, error = TRUE}
+gapminder %>% 
+  mutate(diff_pop = diff(pop))
+```
+
+```{r}
+gapminder %>% 
+  mutate(total_pop = sum(as.numeric(pop)))
+```
+
+## Your Turn 5
+
+Alter the code to add a `prev_lifeExp` column that contains the life expectancy from the previous record.
+
+(Hint: use cheatsheet, you want to offset elements by one)
+
+Extra challenge: Why isn't this quite the 'life expectency five years ago'?
+
+```{r}
+gapminder %>%
+  mutate()
+```
+
+## Your Turn 6
+
+Use summarise() to compute three statistics about the data:
+
+* The first (minimum) year in the dataset
+* The last (maximum) year in the dataset
+* The number of countries represented in the data (Hint: use cheatsheet)
+
+```{r}
+gapminder 
+```
+
+## Your Turn 7
+
+Extract the rows where continent == "Africa" and year == 2007. 
+
+Then use summarise() and summary functions to find:
+
+1. The number of unique countries
+2. The median life expectancy
+
+```{r}
+gapminder 
+```
+
+## Your Turn 8
+
+Find the median life expectancy by continent in 2007.
+
+```{r}
+gapminder %>%
+  filter(year == 2007)
+```
+
+## Your Turn 9
+
+Brainstorm with your neighbor the sequence of operations to find:  the country with biggest jump in life expectancy  (between any two consecutive records) for each continent.
+
+## Your Turn 10
+
+Find the country with biggest jump in life expectancy (between any two consecutive records) for each continent.
+
+```{r}
+
+
+```
+
+## Your Turn 11
+
+Use `left_join()` to add the country codes in `country_codes` to the gapminder data.
+
+```{r}
+gapminder
+```
+
+**Challenge**: Which codes in country_codes have no matches in gapminder?
+
+```{r}
+
+```
+
+
+***
+
+# Take aways
+
+* Extract cases with `filter()`  
+* Make new variables, with `mutate()`  
+* Make tables of summaries with `summarise()`  
+* Do groupwise operations with `group_by()`
+* Connect operations with `%>%`  
+* Joins are two table verbs
