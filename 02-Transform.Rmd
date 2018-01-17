@@ -182,7 +182,7 @@ Find the country with biggest jump in life expectancy (between any two consecuti
 Use `left_join()` to add the country codes in `country_codes` to the gapminder data.
 
 ```{r}
-gapminder
+country_codes
 ```
 
 **Challenge**: Which codes in country_codes have no matches in gapminder?

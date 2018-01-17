@@ -1,6 +1,6 @@
 ---
 title: "Visualize Data"
-output: html_document
+output: html_notebook
 ---
 
 <!-- This file by RStudio is taken from https://github.com/rstudio/master-the-tidyverse and is licensed under a Creative Commons Attribution 4.0 International License. -->
