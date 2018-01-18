@@ -3,7 +3,7 @@ title: "Tidy Data"
 output: html_notebook
 ---
 
-<!-- This file by RStudio is taken from https://github.com/rstudio/master-the-tidyverse and is licensed under a Creative Commons Attribution 4.0 International License. -->
+<!-- This file by Charlotte Wickham is licensed under a Creative Commons Attribution 4.0 International License, adapted from the orignal work at https://github.com/rstudio/master-the-tidyverse by RStudio. -->
 
 ```{r setup}
 library(tidyverse)
