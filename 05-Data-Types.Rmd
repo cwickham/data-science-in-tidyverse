@@ -1,0 +1,168 @@
+---
+title: "Data Types"
+output: html_notebook
+---
+
+<!-- This file by Charlotte Wickham is licensed under a Creative Commons Attribution 4.0 International License, adapted from the orignal work at https://github.com/rstudio/master-the-tidyverse by RStudio. -->
+
+```{r setup}
+library(tidyverse)
+library(lubridate)
+
+# Example of a factor
+eyes <- factor(x = c("blue", "green", "green"), 
+               levels = c("blue", "brown", "green"))
+
+# An example for times/dates
+library(fivethirtyeight)
+births <- US_births_1994_2003 %>%
+  select(date, births)
+```
+
+## Warm-up / Review
+
+Using the data `gss_cat`, find the average hours of tv watched (`tvhours`) for each category of marital status (`marital`).
+
+```{r}
+gss_cat
+```
+
+## Your Turn 1
+
+What kind of object is the `marital` variable?  
+
+```{r}
+gss_cat
+```
+
+Brainstorm with your neighbor, all the things you know about that kind of object.
+
+# Factors
+
+## Your Turn 2
+
+Fix your summary of average hours of tv watched (`tvhours`) by marital status (`marital`), to drop missing values in `tvhours`, then create a plot to examine the results.
+
+```{r}
+gss_cat %>%
+  group_by(marital) %>% 
+  summarise(avg_tvhours = mean(tvhours)) 
+```
+
+## Your Turn 3
+
+Fill in the blanks (`   `) to explore the average hours of tv watched by religion.
+
+```{r}
+gss_cat %>%
+  drop_na(    ) %>%
+  group_by(    ) %>%
+  summarise(    ) %>%
+  ggplot() +
+    geom_point(mapping = aes(x =     , y =    ))
+```
+
+## Quiz 
+
+Why is this plot not very useful?
+
+```{r}
+gss_cat %>%
+  drop_na(tvhours) %>%
+  group_by(denom) %>%
+  summarise(avg_tvhours = mean(tvhours)) %>%
+  ggplot() +
+    geom_point(mapping = aes(x = avg_tvhours,
+      y = fct_reorder(denom, avg_tvhours)))
+```
+
+## Your Turn 4
+
+Edit the code to also relabel some other Baptist denominations:
+
+* "Baptist-dk which"    
+* "Other baptists"  
+
+```{r}
+gss_cat %>%
+  mutate(denom = fct_recode(denom,
+    "Baptist - Southern" = "Southern baptist")
+  ) %>%
+  pull(denom) %>%
+  levels()
+```
+
+## Your Turn 5
+
+What does the function `detect_denom()` do?
+
+```{r}
+detect_denom <- function(x){
+  case_when(
+    str_detect(x, "[Bb]ap") ~ "Baptist", 
+    str_detect(x, "[Pp]res") ~ "Presbyterian",
+    str_detect(x, "[Ll]uth") ~ "Lutheran",
+    str_detect(x, "[Mm]eth") ~ "Methodist",
+    TRUE ~ x
+  )
+}
+
+gss_cat %>% pull(denom) %>% levels() %>% detect_denom()
+```
+
+# Strings
+
+With your neighbor, predict what these might return:
+
+```{r}
+strings <- c("Apple", "Pineapple", "Orange")
+
+str_detect(strings, pattern = "pp")
+str_detect(strings, pattern =  "apple")
+str_detect(strings, pattern = "[Aa]pple")
+```
+
+Then run them!
+
+# Times and Dates
+
+## Your Turn 7
+
+For each of the following formats (of the same date), pick the right `ymd()` function to parse them:
+
+```{r}
+"2018 Feb 02"
+"2-1-18"
+"01/02/2018"
+```
+
+## Your Turn 8
+
+Fill in the blanks to:
+
+* Extract the month from date. 
+* Extract the year from date.
+* Find the total births for each year/month.
+* Plot the results as a line chart.
+
+```{r}
+births %>%
+  mutate(year = ___,
+    month = ___) %>%
+  group_by(___, ___) %>%
+  summarise(total_births = ___) %>%
+  ggplot() + 
+    geom_line(aes(x = month, y = total_births, group = year))
+```
+
+
+# Take Aways
+
+Dplyr gives you three _general_ functions for manipulating data: `mutate()`, `summarise()`, and `group_by()`. Augment these with functions from the packages below, which focus on specific types of data.
+
+Package   | Data Type
+--------- | --------
+forcats   | factors
+stringr   | strings
+hms       | times
+lubridate | dates and times
