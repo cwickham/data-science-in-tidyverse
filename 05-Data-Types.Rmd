@@ -53,7 +53,7 @@ gss_cat %>%
 
 Fill in the blanks (`   `) to explore the average hours of tv watched by religion.
 
-```{r}
+```{r, error = TRUE}
 gss_cat %>%
   drop_na(    ) %>%
   group_by(    ) %>%
@@ -145,7 +145,7 @@ Fill in the blanks to:
 * Find the total births for each year/month.
 * Plot the results as a line chart.
 
-```{r}
+```{r, error = TRUE}
 births %>%
   mutate(year = ___,
     month = ___) %>%
