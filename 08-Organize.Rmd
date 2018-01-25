@@ -1,0 +1,99 @@
+---
+title: "Organize with List Columns"
+output: html_notebook
+---
+
+<!-- This file by Charlotte Wickham is licensed under a Creative Commons Attribution 4.0 International License, adapted from the orignal work at https://github.com/rstudio/master-the-tidyverse by RStudio. -->
+
+```{r setup}
+library(tidyverse)
+library(gapminder)
+library(broom)
+
+nz <- gapminder %>%
+  filter(country == "New Zealand")
+us <- gapminder %>%
+  filter(country == "United States")
+```
+
+## Your turn 1
+
+How has life expectancy changed over time?
+Make a line plot of lifeExp vs. year grouped by country.  
+Set alpha to 0.2, to see the results better.
+
+```{r}
+gapminder
+
+
+```
+
+## Quiz
+
+How is a data frame/tibble similar to a list?
+
+## Quiz
+
+If one of the elements of a list can be another list,
+can one of the columns of a data frame be another list?
+
+## Your turn 2
+
+Run this chunk:
+```{r}
+gapminder_nested <- gapminder %>%
+  group_by(country) %>%
+  nest()
+
+fit_model <- function(df) lm(lifeExp ~ year, data = df)
+
+gapminder_nested <- gapminder_nested %>% 
+  mutate(model = map(data, fit_model))
+
+gapminder_nested <- gapminder_nested %>% 
+  mutate(r.squared = map_dbl(model, get_rsq))
+```
+
+Then filter `gapminder_nested` to find the countries with r.squared less than 0.5.  
+
+```{r}
+
+```
+
+## Your Turn 3
+
+Edit the code in the chunk provided to instead find and plot countries with a slope above 0.6 years/year.
+
+```{r}
+get_slope <- function(mod) {
+  tidy(mod) %>% filter(term == "year") %>% pull(estimate)
+}
+
+# Add new column with r-sqaured
+gapminder_nested <- gapminder_nested %>% 
+  mutate(r.squared = map_dbl(model, get_rsq))
+
+# filter out low r-squared countries
+poor_fit <- gapminder_nested %>% 
+  filter(r.squared < 0.5)
+
+# unnest and plot result
+unnest(poor_fit, data) %>%
+  ggplot(aes(x = year, y = lifeExp)) + 
+    geom_line(aes(color = country))
+```
+
+## Your Turn 4
+
+**Challenge:**
+
+1. Create your own copy of `gapminder_nested` and then add one more list column: output which contains the output of `augment()` for each model.
+
+2.  Plot the residuals against time for the countries with large r-squared.
+
+```{r}
+
+```
+
+# Take away
+
