@@ -50,6 +50,8 @@ fit_model <- function(df) lm(lifeExp ~ year, data = df)
 gapminder_nested <- gapminder_nested %>% 
   mutate(model = map(data, fit_model))
 
+get_rsq <- function(mod) glance(mod)$r.squared
+
 gapminder_nested <- gapminder_nested %>% 
   mutate(r.squared = map_dbl(model, get_rsq))
 ```
