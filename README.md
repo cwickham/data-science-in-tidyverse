@@ -6,7 +6,7 @@ This is a two-day hands on workshop based on the book [R for Data Science](http:
 
 ## Software Requirements
 
-You'll be using RStudio Cloud, so (all going well) on the day of the workshop all you'll need is a laptop that can access the internet (wifi will be available).  
+You'll be using RStudio Cloud, so (all going well) on the day of the workshop all you'll need is **a laptop that can access the internet** (wifi will be available).  
 
 However, as a backup (e.g. in case of wifi issues) it would be best if you also have R and RStudio installed locally, along with the following packages:
 
