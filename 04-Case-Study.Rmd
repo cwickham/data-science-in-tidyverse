@@ -63,17 +63,6 @@ Use the figure as a guide for what the data should like to make the final plot. 
      
 ---------------------------     
 
-There is more than one way to get there, but we
-ll roughly follow this strategy:
-
-* Get just the data for the 6th, 13th, and 20th
-* Calculate variable of interest:
-    * (For each month/year):
-        * Find average births on 6th and 20th
-        * Find percentage difference between births on 13th and average births on 6th and 20th
-    
-    * Average percent difference by day of the week
-* Create plot
 
 ## Your Turn 2
 
