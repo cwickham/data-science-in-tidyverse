@@ -104,7 +104,7 @@ Save the last plot and then locate it in the files pane.
 
 You can use this code template to make thousands of graphs with **ggplot2**.
 
-```{r eval = FALSE}
+```{r, eval = FALSE}
 ggplot(data = <DATA>) +
   <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
 ```

@@ -29,9 +29,6 @@ gapminder
 
 ## Your Turn 1
 
-* `filter()` selects rows
-* logical tests
-
 See if you can use the logical operators to manipulate our code below to show:
 
 The data for United States
@@ -55,6 +52,7 @@ filter(gapminder, country == "New Zealand")
 Use Boolean operators to alter the code below to return only the rows that contain:
 
 * United States before 1970
+
 ```{r}
 filter(gapminder, country == "New Zealand", year > 2000)
 ```

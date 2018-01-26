@@ -80,8 +80,8 @@ gss_cat %>%
 
 Edit the code to also relabel some other Baptist denominations:
 
-* "Baptist-dk which"    
-* "Other baptists"  
+* "Baptist-dk which" -> "Baptist - Don't Know"    
+* "Other baptists" -> "Baptist = Other"
 
 ```{r}
 gss_cat %>%

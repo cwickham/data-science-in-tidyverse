@@ -87,7 +87,7 @@ unnest(poor_fit, data) %>%
 
 **Challenge:**
 
-1. Create your own copy of `gapminder_nested` and then add one more list column: output which contains the output of `augment()` for each model.
+1. Create your own copy of `gapminder_nested` and then add one more list column: `output` which contains the output of `augment()` for each model.
 
 2.  Plot the residuals against time for the countries with large r-squared.
 

@@ -1,6 +1,6 @@
 ---
 title: "Model"
-output: html_document
+output: html_notebook
 ---
 
 ```{r setup, message=FALSE}
@@ -63,7 +63,7 @@ mod_h <- wages %>% lm(log(income) ~ height, data = .)
 
 ## Your Turn 6
 
-Repeat the process to make a line graph of `height` vs `.fitted` colored by `sex` for model mod_ehs. Are the results interpretable? Add `+ facet_wrap(~education)` to the end of your code. What happens?
+Repeat the process to make a line graph of `height` vs `.fitted` colored by `sex` for model `mod_ehs`. Are the results interpretable? Add `+ facet_wrap(~education)` to the end of your code. What happens?
 
 ```{r}
 mod_ehs <- wages %>% lm(log(income) ~ education + height + sex, data = .)
