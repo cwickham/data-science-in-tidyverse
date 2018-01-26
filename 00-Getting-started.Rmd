@@ -18,7 +18,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing  *Ctrl+Option+I* (Windows) or *Cmd+Option+I* (Mac).
+Add a new chunk by clicking the *Insert* button on the toolbar, then selecting *R* or by pressing  *Ctrl+Option+I* (Windows) or *Cmd+Option+I* (Mac).
 
 When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* (Windows) or *Cmd+Shift+K* (Mac) to preview the HTML file). 
 
