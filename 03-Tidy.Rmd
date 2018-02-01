@@ -23,7 +23,7 @@ pollution <- tribble(
     "London", "large",      22,
     "London", "small",      16,
    "Beijing", "large",     121,
-   "Beijing", "small",     121
+   "Beijing", "small",     56
 )
 
 
