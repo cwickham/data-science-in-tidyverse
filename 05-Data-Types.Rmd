@@ -131,7 +131,7 @@ Then run them!
 For each of the following formats (of the same date), pick the right `ymd()` function to parse them:
 
 ```{r}
-"2018 Feb 02"
+"2018 Feb 01"
 "2-1-18"
 "01/02/2018"
 ```

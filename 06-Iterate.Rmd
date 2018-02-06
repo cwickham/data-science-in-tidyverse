@@ -41,7 +41,7 @@ Atomic vectors are: "logical", "integer", "numeric" (synonym "double"), "complex
 Here is a list:
 
 ```{r}
-a_list <- list(num = c(8, 9), 
+a_list <- list(nums = c(8, 9), 
             log = TRUE,    
             cha = c("a", "b", "c"))
 ```
@@ -49,11 +49,11 @@ a_list <- list(num = c(8, 9),
 Here are two subsetting commands. Do they return the same values? Run the code chunk above, _and then_ run the code chunks below to confirm
 
 ```{r}
-a_list["num"]
+a_list["nums"] 
 ```
 
 ```{r}
-a_list$num
+a_list$nums
 ```
 
 ## Your Turn 3
